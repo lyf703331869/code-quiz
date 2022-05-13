@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  /* border: solid 1px red; */
+}
+
+body {
+  padding: 10px;
+}
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+main {
+  height: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+main div {
+  max-width: 50%;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
