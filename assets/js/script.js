@@ -30,17 +30,20 @@ startBtn.addEventListener("click", function () {
 function quizQuestions() {
   i++;
   if (i <= 10) {
-    quizQuestion.children[0].textContent = questionChar.question;
-    quizQuestion.children[1].children[0].textContent = questionChar.answers[0];
-    quizQuestion.children[2].children[0].textContent = questionChar.answers[1];
-    quizQuestion.children[3].children[0].textContent = questionChar.answers[2];
-    quizQuestion.children[4].children[0].textContent = questionChar.answers[3];
-
+    changeQuestion();
     checkIfCorrect();
   } else {
     //   InputYourName();
   }
-  i++;
+}
+
+function changeQuestion() {
+  // need to find out how to change questions 5/14
+  quizQuestion.children[0].textContent = questionChar.question;
+  quizQuestion.children[1].children[0].textContent = questionChar.answers[0];
+  quizQuestion.children[2].children[0].textContent = questionChar.answers[1];
+  quizQuestion.children[3].children[0].textContent = questionChar.answers[2];
+  quizQuestion.children[4].children[0].textContent = questionChar.answers[3];
 }
 
 function checkIfCorrect() {
