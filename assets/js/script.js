@@ -6,11 +6,21 @@ var timeEl = document.querySelector(".timer");
 var timeLeft = 100;
 var i = 0;
 
-var questionChar = {
+var questionChar1 = {
   question: "What is one plus one?",
   answers: ["two", "three", "four", "five"],
   correctAnswer: "two",
 };
+
+var questionChar2 = {
+  question: "What is one minus one?",
+  answers: ["zero", "one", "two", "three"],
+  correctAnswer: "zero",
+};
+
+var questionShowUp = [questionChar1, questionChar2];
+
+console.log(questionShowUp);
 
 startBtn.addEventListener("click", function () {
   var timeInterval = setInterval(function () {
@@ -19,7 +29,7 @@ startBtn.addEventListener("click", function () {
     if (timeLeft <= -1) {
       clearInterval(timeInterval);
       timeEl.textContent = "";
-      //   InputYourName();
+      // InputYourName();
     }
   }, 1000);
   startPage.style.display = "none";
@@ -28,22 +38,25 @@ startBtn.addEventListener("click", function () {
 });
 
 function quizQuestions() {
-  i++;
   if (i <= 10) {
-    changeQuestion();
+    loadQuestion();
     checkIfCorrect();
   } else {
     //   InputYourName();
   }
 }
 
-function changeQuestion() {
+function loadQuestion() {
   // need to find out how to change questions 5/14
-  quizQuestion.children[0].textContent = questionChar.question;
-  quizQuestion.children[1].children[0].textContent = questionChar.answers[0];
-  quizQuestion.children[2].children[0].textContent = questionChar.answers[1];
-  quizQuestion.children[3].children[0].textContent = questionChar.answers[2];
-  quizQuestion.children[4].children[0].textContent = questionChar.answers[3];
+  quizQuestion.children[0].textContent = questionShowUp[i].question;
+  quizQuestion.children[1].children[0].textContent =
+    questionShowUp[i].answers[0];
+  quizQuestion.children[2].children[0].textContent =
+    questionShowUp[i].answers[1];
+  quizQuestion.children[3].children[0].textContent =
+    questionShowUp[i].answers[2];
+  quizQuestion.children[4].children[0].textContent =
+    questionShowUp[i].answers[3];
 }
 
 function checkIfCorrect() {
@@ -53,10 +66,12 @@ function checkIfCorrect() {
 
     if (
       element.matches("button") &&
-      questionChar.correctAnswer === event.target.textContent
+      questionShowUp[i].correctAnswer === event.target.textContent
     ) {
+      i++;
       quizQuestions();
     } else {
+      i++;
       quizQuestions();
       timeLeft -= 10;
     }
