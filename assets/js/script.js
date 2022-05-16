@@ -6,19 +6,22 @@ var quizQuestion = document.querySelector(".quizQuestion");
 var timeEl = document.querySelector(".timer");
 var ansReveal = document.querySelector(".answerReveal");
 var enterInitials = document.querySelector(".enter-initials");
+var submitBtn = document.querySelector("#submit-button");
+var warning = document.querySelector("#warning");
 
 // Starting Data ========================================
 var timeLeft = 100;
 var i = 0;
 
 var questionChar1 = {
-  question: "Commonly used data types do NOT include:",
+  question: "1. Commonly used data types do NOT include:",
   answers: ["1 - Booleans", "2 - Alerts", "3 - Strings", "4 - Numbers"],
   correctAnswer: "2 - Alerts",
 };
 
 var questionChar2 = {
-  question: "The condition of an if/else statement is enclosed within ______.",
+  question:
+    "2. The condition of an if/else statement is enclosed within ______.",
   answers: [
     "1 - Quotes",
     "2 - Curly Brackets",
@@ -29,7 +32,7 @@ var questionChar2 = {
 };
 
 var questionChar3 = {
-  question: "Arrays in Javascript can be used to store ______.",
+  question: "3. Arrays in Javascript can be used to store ______.",
   answers: [
     "1 - Numbers and strings",
     "2 - Other Arrays",
@@ -41,7 +44,7 @@ var questionChar3 = {
 
 var questionChar4 = {
   question:
-    "String values must be enclosed within ______ when being assigned to variables.",
+    "4. String values must be enclosed within ______ when being assigned to variables.",
   answers: [
     "1 - Quotes",
     "2 - Curly Brackets",
@@ -53,7 +56,7 @@ var questionChar4 = {
 
 var questionChar5 = {
   question:
-    "A very useful tool used during development and debugging for printing content to the debugger is:",
+    "5. A very useful tool used during development and debugging for printing content to the debugger is:",
   answers: [
     "1 - Javascript",
     "2 - console.log",
@@ -65,7 +68,7 @@ var questionChar5 = {
 
 var questionChar6 = {
   question:
-    'What is the correct syntax for referring to an external script called "xxx.js "?',
+    '6. What is the correct syntax for referring to an external script called "xxx.js "?',
   answers: [
     '1 - <script="xxx.js.">',
     '2 - <script src="xxx.js">',
@@ -77,19 +80,19 @@ var questionChar6 = {
 
 var questionChar7 = {
   question:
-    "Which built-in method removes the last element from an array and returns that element?",
+    "7. Which built-in method removes the last element from an array and returns that element?",
   answers: ["1 - last()", "2 - get()", "3 - pop()", "4 - None of the above"],
   correctAnswer: "3 - pop()",
 };
 
 var questionChar8 = {
-  question: "Inside which HTML element do we put the JavaScript?",
+  question: "8. Inside which HTML element do we put the JavaScript?",
   answers: ["1 - <javascript>", "2 - <scripting>", "3 - <script>", "4 - <js>"],
   correctAnswer: "3 - <script>",
 };
 
 var questionChar9 = {
-  question: "How to write an IF statement in Javascript?",
+  question: "9. How to write an IF statement in Javascript?",
   answers: [
     "1 - if i = 5 then",
     "2 - if i = 5",
@@ -100,7 +103,7 @@ var questionChar9 = {
 };
 
 var questionChar10 = {
-  question: 'How do you write "Hello World" in an alert box?',
+  question: '10. How do you write "Hello World" in an alert box?',
   answers: [
     '1 - msg("Hello World");',
     '2 - alertBox("Hello World");',
@@ -125,17 +128,17 @@ var questionShowUp = [
 
 // Functions =======================================
 
-startBtn.addEventListener("click", function () {
+startBtn.addEventListener("click", function startQuiz() {
   startPage.style.display = "none";
   quizQuestion.style.display = "";
   quizQuestions();
   var timeInterval = setInterval(function () {
     timeLeft--;
     timeEl.textContent = timeLeft + "s left";
-    if (timeLeft <= -1) {
+    if (timeLeft <= -1 || i === 10) {
       clearInterval(timeInterval);
       timeEl.textContent = "";
-      //InputYourName();
+      InputYourName();
     }
   }, 1000);
 });
@@ -195,11 +198,24 @@ function showAnswer() {
 }
 
 function InputYourName() {
-  // event.preventDefault();
-  clearInterval(timeInterval);
   quizQuestion.style.display = "none";
   enterInitials.style.display = "";
   enterInitials.children[1].textContent = "Your final score is " + timeLeft;
+  submitBtn.addEventListener("click", function () {
+    var userInitial = document.querySelector("#input-initial").value;
+    // console.log(userInitial);
+    if (userInitial === "") {
+      warning.textContent = "Initial cannot be blank!";
+    } else {
+      localStorage.setItem("userInitial", userInitial);
+      localStorage.setItem("score", timeLeft);
+      highScore();
+    }
+  });
+}
+
+function highScore() {
+  enterInitials.style.display = "none";
 }
 
 // User Interaction =================================

@@ -44,8 +44,16 @@
         <h2>All done!</h2>
         <p></p>
         <label for="initial">Enter initials:</label>
-        <input type="text" name="initial" />
-        <button type="submit">Submit</button>
+        <input
+          type="text"
+          name="initial"
+          maxlength="5"
+          id="input-initial"
+          placeholder="Your Initial"
+          style="text-transform: uppercase"
+        />
+        <button type="submit" id="submit-button">Submit</button>
+        <p id="warning"></p>
       </div>
       <div class="answerReveal" style="display: none">
         <hr />
