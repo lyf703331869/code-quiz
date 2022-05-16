@@ -1,3 +1,4 @@
+// Dependencies =======================================
 var main = document.querySelector("main");
 var startPage = document.querySelector(".startPage");
 var startBtn = document.querySelector(".start");
@@ -5,10 +6,10 @@ var quizQuestion = document.querySelector(".quizQuestion");
 var timeEl = document.querySelector(".timer");
 var ansReveal = document.querySelector(".answerReveal");
 var enterInitials = document.querySelector(".enter-initials");
-var timeLeft = 70;
-var i = 0;
 
-// console.log(questionShowUp[i].answers[0]);
+// Starting Data ========================================
+var timeLeft = 100;
+var i = 0;
 
 var questionChar1 = {
   question: "Commonly used data types do NOT include:",
@@ -62,13 +63,67 @@ var questionChar5 = {
   correctAnswer: "2 - console.log",
 };
 
+var questionChar6 = {
+  question:
+    'What is the correct syntax for referring to an external script called "xxx.js "?',
+  answers: [
+    '1 - <script="xxx.js.">',
+    '2 - <script src="xxx.js">',
+    '3 - <script name="xxx.js">',
+    "4 - <script href=\"xxx.js'>",
+  ],
+  correctAnswer: '2 - <script src="xxx.js">',
+};
+
+var questionChar7 = {
+  question:
+    "Which built-in method removes the last element from an array and returns that element?",
+  answers: ["1 - last()", "2 - get()", "3 - pop()", "4 - None of the above"],
+  correctAnswer: "3 - pop()",
+};
+
+var questionChar8 = {
+  question: "Inside which HTML element do we put the JavaScript?",
+  answers: ["1 - <javascript>", "2 - <scripting>", "3 - <script>", "4 - <js>"],
+  correctAnswer: "3 - <script>",
+};
+
+var questionChar9 = {
+  question: "How to write an IF statement in Javascript?",
+  answers: [
+    "1 - if i = 5 then",
+    "2 - if i = 5",
+    "3 - if i == 5 then",
+    "4 - if (i==5)",
+  ],
+  correctAnswer: "4 - if (i==5)",
+};
+
+var questionChar10 = {
+  question: 'How do you write "Hello World" in an alert box?',
+  answers: [
+    '1 - msg("Hello World");',
+    '2 - alertBox("Hello World");',
+    '3 - alert("Hello World");',
+    '4 - msgBox("Hello World");',
+  ],
+  correctAnswer: '3 - alert("Hello World");',
+};
+
 var questionShowUp = [
   questionChar1,
   questionChar2,
   questionChar3,
   questionChar4,
   questionChar5,
+  questionChar6,
+  questionChar7,
+  questionChar8,
+  questionChar9,
+  questionChar10,
 ];
+
+// Functions =======================================
 
 startBtn.addEventListener("click", function () {
   startPage.style.display = "none";
@@ -80,15 +135,14 @@ startBtn.addEventListener("click", function () {
     if (timeLeft <= -1) {
       clearInterval(timeInterval);
       timeEl.textContent = "";
-      // InputYourName();
+      //InputYourName();
     }
   }, 1000);
 });
 
 function quizQuestions() {
-  if (i <= 4) {
+  if (i < 10) {
     loadQuestion();
-    // console.log(questionShowUp[i]);
     checkIfCorrect();
   } else {
     InputYourName();
@@ -109,10 +163,9 @@ function loadQuestion() {
 
 function checkIfCorrect() {
   quizQuestion.addEventListener("click", function (event) {
-    var element = event.target;
-    console.log(element);
+    event.stopImmediatePropagation();
     if (
-      element.matches(".button") &&
+      event.target.matches("button") &&
       questionShowUp[i].correctAnswer === event.target.textContent
     ) {
       i++;
@@ -120,7 +173,10 @@ function checkIfCorrect() {
       ansReveal.style.display = "";
       ansReveal.children[1].textContent = "Correct!";
       showAnswer();
-    } else {
+    } else if (
+      event.target.matches("button") &&
+      questionShowUp[i].correctAnswer !== event.target.textContent
+    ) {
       i++;
       timeLeft -= 10;
       quizQuestions();
@@ -131,7 +187,6 @@ function checkIfCorrect() {
   });
 }
 function showAnswer() {
-  var j = 2;
   var answerInterval = setInterval(function () {
     clearInterval(answerInterval);
     ansReveal.children[1].textContent = "";
@@ -146,3 +201,7 @@ function InputYourName() {
   enterInitials.style.display = "";
   enterInitials.children[1].textContent = "Your final score is " + timeLeft;
 }
+
+// User Interaction =================================
+
+// Initicalization ==================================
