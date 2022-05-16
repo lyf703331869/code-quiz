@@ -29,6 +29,16 @@ main div {
   margin-top: 10%;
 }
 
+.startPage button {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 50%);
+}
+
+.quizQuestion h2 {
+  font-size: 1.5em;
+}
+
 div p button {
   margin: 2px;
   padding: 2px;

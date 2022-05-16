@@ -16,11 +16,11 @@
     </header>
     <main>
       <div class="startPage">
-        <h1>Are You Ready?</h1>
+        <h1>Coding Quiz Challenge</h1>
         <p>
-          Total 10 random questions, you need to finish in 100s. Please note any
-          wrong answers will cut off 10s. You final score will be the time left
-          and can be nagitive score.
+          Try to answer the following code-related questions within the time
+          limit. Keep in mind that incorrect answers will penalize your
+          score/time by ten seconds!
         </p>
         <button class="start">Start</button>
       </div>
@@ -28,17 +28,28 @@
       <div class="quizQuestion" style="display: none">
         <h2></h2>
         <p>
-          <button></button>
+          <button class="button"></button>
         </p>
         <p>
-          <button></button>
+          <button class="button"></button>
         </p>
         <p>
-          <button></button>
+          <button class="button"></button>
         </p>
         <p>
-          <button></button>
+          <button class="button"></button>
         </p>
+      </div>
+      <div class="enter-initials" style="display: none">
+        <h2>All done!</h2>
+        <p></p>
+        <label for="initial">Enter initials:</label>
+        <input type="text" name="initial" />
+        <button type="submit">Submit</button>
+      </div>
+      <div class="answerReveal" style="display: none">
+        <hr />
+        <h3></h3>
       </div>
     </main>
     <script src="./assets/js/script.js"></script>
