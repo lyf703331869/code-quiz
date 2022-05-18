@@ -11,7 +11,7 @@
   </head>
   <body>
     <header>
-      <div class="highScore">View Highscores</div>
+      <button class="highScoreBtn">View Highscores</button>
       <div class="timer"></div>
     </header>
     <main>
@@ -50,6 +50,7 @@
           maxlength="5"
           id="input-initial"
           placeholder="Your Initial"
+          onkeyup="this.value = this.value.toUpperCase();"
           style="text-transform: uppercase"
         />
         <button type="submit" id="submit-button">Submit</button>
@@ -58,6 +59,12 @@
       <div class="answerReveal" style="display: none">
         <hr />
         <h3></h3>
+      </div>
+      <div class="highscore" style="display: none">
+        <h2>Highscores</h2>
+        <ul class="highscoreList"></ul>
+        <button id="returnHome">Go Back</button>
+        <button id="clearHighscore">Clear Highscores</button>
       </div>
     </main>
     <script src="./assets/js/script.js"></script>
