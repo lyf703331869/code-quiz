@@ -19,7 +19,8 @@ Created by Yafei Liu with the gracious help of Benjamin Wright and TA Max Ohsawa
 # Website
 https://lyf703331869.github.io/code-quiz/
 
+# Screenshot
+<img width="1390" alt="code-quiz" src="https://user-images.githubusercontent.com/103960619/168959382-913e89e0-3482-4f7a-802d-b2249e55920d.png">
+
 # License
 All Rights Reserved by Yafei.
-
-<img width="1390" alt="code-quiz" src="https://user-images.githubusercontent.com/103960619/168959382-913e89e0-3482-4f7a-802d-b2249e55920d.png">
